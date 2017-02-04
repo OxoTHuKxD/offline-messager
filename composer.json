@@ -1,0 +1,28 @@
+{
+	"name": "OxoTHuKxD/offline-messager",
+	"description": "Offline messager Yii 2",
+	"type": "project",
+	"support": {
+		"source": "https://github.com/OxoTHuKxD/offline-messager"
+	},
+	"minimum-stability": "stable",
+	"require": {
+		"php": ">=5.4.0",
+		"yiisoft/yii2": "2.0.*",
+		"yiisoft/yii2-bootstrap": "*",
+		"yiisoft/yii2-swiftmailer": "*"
+	},
+	"require-dev": {
+		"yiisoft/yii2-debug": "*",
+		"yiisoft/yii2-gii": "*"
+	},
+	"config": {
+		"process-timeout": 1800
+	},
+	"extra": {
+		"asset-installer-paths": {
+			"npm-asset-library": "vendor/npm",
+			"bower-asset-library": "vendor/bower"
+		}
+	}
+}
