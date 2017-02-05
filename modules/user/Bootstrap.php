@@ -21,6 +21,10 @@ class Bootstrap implements BootstrapInterface
             ],
         ];
 
+        \Yii::$container->set('app\modules\user\externalContracts\give\UserFinderInterface', [
+            'class' => 'app\modules\user\implementationContracts\give\UserFinder'
+        ]);
+
         if ($app instanceof WebApplication) {
             \Yii::$container->set('yii\web\User', [
                 'enableAutoLogin' => true,
