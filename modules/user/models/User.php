@@ -59,13 +59,12 @@ class User extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Module::t('module', 'ID'),
-            'username' => Module::t('module', 'Username'),
-            'email' => Module::t('module', 'Email'),
-            'password_hash' => Module::t('module', 'Password Hash'),
-            'status_count' => Module::t('module', 'Status Count'),
-            'created_at' => Module::t('module', 'Created At'),
-            'updated_at' => Module::t('module', 'Updated At'),
+            'id' => Module::t('module', 'USER_ID'),
+            'username' => Module::t('module', 'USER_NAME'),
+            'email' => Module::t('module', 'USER_EMAIL'),
+            'status_count' => Module::t('module', 'USER_STATUS_COUNT'),
+            'created_at' => Module::t('module', 'USER_CREATED_AT'),
+            'updated_at' => Module::t('module', 'USER_UPDATED_AT'),
         ];
     }
 
@@ -96,5 +95,19 @@ class User extends ActiveRecord
     public static function find()
     {
         return new UserQuery(get_called_class());
+    }
+
+    /**
+     * @param int $userId
+     * @return bool
+     */
+    public function hasLike($userId)
+    {
+        return UserStatus::find()->where(['user_id' => $userId, 'liked_user_id' => $this->id])->exists();
+    }
+
+    public function isOnline()
+    {
+        return \Yii::$app->cache->exists(['type' => Module::getThisModule()->onlineCacheKey, 'id' => $this->id]);
     }
 }

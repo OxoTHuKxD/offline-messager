@@ -18,6 +18,10 @@ class Module extends \yii\base\Module
 
     public $userStatusTableName = '{{%user_status}}';
 
+    public $freeOnlineTime = 60 * 1;
+
+    public $onlineCacheKey = 'user_online';
+
     /**
      * @inheritdoc
      */

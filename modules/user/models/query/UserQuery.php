@@ -10,6 +10,15 @@ namespace app\modules\user\models\query;
 class UserQuery extends \yii\db\ActiveQuery
 {
     /**
+     * @param string $email
+     * @return \app\modules\user\models\User|array|null
+     */
+    public function findByEmail($email)
+    {
+        return $this->andWhere(['email' => $email])->one();
+    }
+
+    /**
      * @inheritdoc
      * @return \app\modules\user\models\User[]|array
      */

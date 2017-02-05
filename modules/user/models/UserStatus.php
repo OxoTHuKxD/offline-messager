@@ -41,17 +41,6 @@ class UserStatus extends ActiveRecord
     }
 
     /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'user_id' => Module::t('module', 'User ID'),
-            'liked_user_id' => Module::t('module', 'Liked User ID'),
-        ];
-    }
-
-    /**
      * @inheritDoc
      */
     public function afterSave($insert, $changedAttributes)
