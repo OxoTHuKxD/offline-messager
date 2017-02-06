@@ -18,6 +18,14 @@ NavBar::begin([
         'class' => 'navbar-inverse navbar-fixed-top',
     ],
 ]);
+
+$countNewMessages = 0;
+if (!Yii::$app->user->isGuest) {
+    /** @var app\modules\messages\externalContracts\give\UserNewMessagesInterface $userMessageCounter */
+    $userMessageCounter = Yii::createObject('app\modules\messages\externalContracts\give\UserNewMessagesInterface');
+    $countNewMessages = $userMessageCounter->getNewMessagesCount(Yii::$app->user->id);
+}
+
 echo Nav::widget([
     'options' => ['class' => 'navbar-nav navbar-right'],
     'activateParents' => true,
@@ -33,7 +41,7 @@ echo Nav::widget([
             ['label' => Yii::t('app', 'NAV_CONTACT_LIST'), 'url' => ['/contact-list/default/index']] :
             false,
         !Yii::$app->user->isGuest ?
-            ['label' => Yii::t('app', 'NAV_NEW_MESSAGES'), 'url' => ['/messages/default/new-messages']] :
+            ['label' => Yii::t('app', 'NAV_NEW_MESSAGES') . " <span class=\"badge\">$countNewMessages</span>", 'url' => ['/messages/default/new-messages'], 'encode' => false] :
             false,
         !Yii::$app->user->isGuest ?
             ['label' => Yii::t('app', 'NAV_SEND_MESSAGE'), 'url' => ['/messages/send/index']] :

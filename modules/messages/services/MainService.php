@@ -49,6 +49,10 @@ class MainService
         ]);
     }
 
+    /**
+     * @param int $userId
+     * @return ActiveDataProvider
+     */
     public function getUnreadMessagesProvider($userId)
     {
         return new ActiveDataProvider([
@@ -77,6 +81,15 @@ class MainService
                 ]
             ]
         ]);
+    }
+
+    /**
+     * @param int $userId
+     * @return int|string
+     */
+    public function getNewMessagesCount($userId)
+    {
+        return Message::find()->userInbox($userId)->unread()->count();
     }
 
     /**

@@ -32,5 +32,9 @@ class Bootstrap implements BootstrapInterface
         \Yii::$container->set('app\modules\messages\externalContracts\get\UserInterface', [
             'class' => 'app\modules\mediator\implementation\messages\User'
         ]);
+
+        \Yii::$container->set('app\modules\messages\externalContracts\give\UserNewMessagesInterface', [
+            'class' => 'app\modules\messages\implementationContracts\give\UserNewMessages'
+        ]);
     }
 }
