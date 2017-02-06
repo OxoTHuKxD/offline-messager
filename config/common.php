@@ -10,9 +10,12 @@ $params = ArrayHelper::merge(
 return [
     'name' => 'Offline Messager',
     'basePath' => dirname(__DIR__),
+    'language' => 'ru-RU',
     'bootstrap' => [
         'log',
         'app\modules\main\Bootstrap',
+        'app\modules\user\Bootstrap',
+        'app\modules\contactList\Bootstrap',
     ],
     'components' => [
         'db' => [
@@ -24,7 +27,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-				'' => 'main/default/index',
+                '' => 'user/default/index',
                 '<_a:error>' => 'main/default/<_a>',
 
                 '<_m:[\w\-]+>' => '<_m>/default/index',
@@ -43,11 +46,22 @@ return [
             ],
         ],
         'cache' => [
-            'class' => 'yii\caching\DummyCache',
+            'class' => 'yii\caching\FileCache',
         ],
         'log' => [
             'class' => 'yii\log\Dispatcher',
         ],
     ],
-    'params' => $params,
+    'modules' => [
+        'user' => [
+            'class' => 'app\modules\user\Module',
+        ],
+        'contact-list' => [
+            'class' => 'app\modules\contactList\Module',
+        ],
+        'messages' => [
+            'class' => 'app\modules\messages\Module',
+        ]
+    ],
+    'params' => $params
 ];
