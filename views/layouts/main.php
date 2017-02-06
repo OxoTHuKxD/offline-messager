@@ -33,6 +33,9 @@ echo Nav::widget([
             ['label' => Yii::t('app', 'NAV_CONTACT_LIST'), 'url' => ['/contact-list/default/index']] :
             false,
         !Yii::$app->user->isGuest ?
+            ['label' => Yii::t('app', 'NAV_NEW_MESSAGES'), 'url' => ['/messages/default/new-messages']] :
+            false,
+        !Yii::$app->user->isGuest ?
             ['label' => Yii::t('app', 'NAV_SEND_MESSAGE'), 'url' => ['/messages/send/index']] :
             false,
         !Yii::$app->user->isGuest ?

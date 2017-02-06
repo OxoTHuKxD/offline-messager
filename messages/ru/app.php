@@ -8,6 +8,7 @@ return [
     'NAV_INBOX_MESSAGES' => 'Полученные сообщения',
     'NAV_SENT_MESSAGES' => 'Отправленные сообщения',
     'NAV_SEND_MESSAGE' => 'Написать сообщение',
+    'NAV_NEW_MESSAGES' => 'Новые сообщения',
     'NAV_REGISTER' => 'Регистрация',
     'NAV_LOGIN' => 'Вход',
     'NAV_LOGOUT' => 'Выход',

@@ -5,7 +5,6 @@ namespace app\modules\messages\models;
 use app\modules\messages\externalContracts\get\UserFinderInterface;
 use app\modules\messages\models\query\MessageQuery;
 use app\modules\messages\Module;
-use Yii;
 use yii\db\ActiveRecord;
 
 /**
@@ -99,5 +98,20 @@ class Message extends ActiveRecord
             $this->created_at = time();
         }
         return parent::beforeSave($insert);
+    }
+
+    public function isNew()
+    {
+        return $this->status === static::STATUS_UNREAD;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function afterFind()
+    {
+        if ($this->isNew() && \Yii::$app->user->id === $this->user_inbox_id) {
+            \Yii::$app->db->createCommand()->update($this->tableName(), ['status' => static::STATUS_READ], ['id' => $this->id])->execute();
+        }
     }
 }

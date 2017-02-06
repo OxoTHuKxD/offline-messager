@@ -49,6 +49,19 @@ class MainService
         ]);
     }
 
+    public function getUnreadMessagesProvider($userId)
+    {
+        return new ActiveDataProvider([
+            'query' => Message::find()->userInbox($userId)->unread(),
+            'sort' => [
+                'defaultOrder' => [
+                    'created_at' => SORT_DESC
+                ]
+            ],
+            'pagination' => false
+        ]);
+    }
+
     /**
      * @param $firstUserId
      * @param $secondUserId

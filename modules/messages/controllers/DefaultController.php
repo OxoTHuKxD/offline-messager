@@ -23,6 +23,11 @@ class DefaultController extends Controller
         parent::__construct($id, $module, $config);
     }
 
+    public function actionNewMessages()
+    {
+        return $this->render('new-messages', ['dataProvider' => $this->mainService->getUnreadMessagesProvider(\Yii::$app->user->id)]);
+    }
+
     /**
      * @param $userId
      * @return string

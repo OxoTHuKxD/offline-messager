@@ -19,4 +19,6 @@ return [
     'MESSAGE_NOT_FOUND' => 'Сообщение не найдено',
     'SEND_MESSAGE' => 'Написать сообщение',
     'DIALOG' => 'Диалог',
+    'NEW_MESSAGES' => 'Новые сообщения',
+    'NEW' => 'новое',
 ];
