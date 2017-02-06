@@ -6,7 +6,6 @@ return [
             'cookieValidationKey' => '',
         ],
         'assetManager' => [
-            'linkAssets' => true,
         ],
         'log' => [
             'targets' => [

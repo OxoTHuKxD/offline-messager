@@ -1,6 +1,7 @@
 <?php
 
 namespace app\modules\messages\models\query;
+
 use app\modules\messages\models\Message;
 use yii\db\ActiveQuery;
 
