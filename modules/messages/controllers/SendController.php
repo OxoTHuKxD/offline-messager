@@ -22,18 +22,22 @@ class SendController extends Controller
         parent::__construct($id, $module, $config);
     }
 
-    public function actionIndex()
+    public function actionIndex($userId = 0)
     {
         /** @var MessageForm $model */
         $model = \Yii::createObject('app\modules\messages\forms\MessageForm');
         if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
             try {
                 $this->sendService->sendMessage(\Yii::$app->user->id, $model->userId, $model->message);
-                $this->redirect(['/messages/default/show-sent-messages']);
+                $this->redirect(\Yii::$app->user->returnUrl ? \Yii::$app->user->returnUrl : ['/messages/default/dialog', 'userId' => $model->userId]);
             }catch (ErrorException $e){
                 $model->addError('userId', $e->getMessage());
             }
         }
+        if ($userId && !$model->userId) {
+            $model->userId = $userId;
+        }
+        \Yii::$app->user->setReturnUrl('');
         return $this->render('message-form', ['model' => $model]);
     }
 }

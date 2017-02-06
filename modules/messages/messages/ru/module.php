@@ -17,4 +17,6 @@ return [
     'INBOX_MESSAGE_LIST' => 'Полученные сообщения',
     'SENT_MESSAGE_LIST' => 'Отправленные сообщения',
     'MESSAGE_NOT_FOUND' => 'Сообщение не найдено',
+    'SEND_MESSAGE' => 'Написать сообщение',
+    'DIALOG' => 'Диалог',
 ];

@@ -3,7 +3,7 @@
 namespace app\modules\contactList\externalContracts\widgets;
 
 use app\modules\contactList\services\MainService;
-use yii\base\Widget;
+use yii\bootstrap\Widget;
 
 class ChangeContactWidget extends Widget
 {

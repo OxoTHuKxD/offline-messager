@@ -8,24 +8,61 @@ use yii\data\ActiveDataProvider;
 class MainService
 {
     /**
-     * @param $userId
+     * @param int $userId
+     * @param int $sentUserId
      * @return ActiveDataProvider
      */
-    public function getInboxMessagesProvider($userId)
+    public function getInboxMessagesProvider($userId, $sentUserId = 0)
     {
+        $query = Message::find()->userInbox($userId);
+        if ($sentUserId !== 0) {
+            $query->userSent($sentUserId);
+        }
         return new ActiveDataProvider([
-            'query' => Message::find()->userInbox($userId),
+            'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'created_at' => SORT_DESC
+                ]
+            ],
         ]);
     }
 
     /**
-     * @param $userId
+     * @param int $userId
+     * @param int $inboxUserId
      * @return ActiveDataProvider
      */
-    public function getSentMessagesProvider($userId)
+    public function getSentMessagesProvider($userId, $inboxUserId = 0)
+    {
+        $query = Message::find()->userSent($userId);
+        if ($inboxUserId !== 0) {
+            $query->userInbox($inboxUserId);
+        }
+        return new ActiveDataProvider([
+            'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'created_at' => SORT_DESC
+                ]
+            ],
+        ]);
+    }
+
+    /**
+     * @param $firstUserId
+     * @param $secondUserId
+     * @return ActiveDataProvider
+     */
+    public function getDialogProvider($firstUserId, $secondUserId)
     {
         return new ActiveDataProvider([
-            'query' => Message::find()->userSent($userId),
+            'query' => Message::find()->userDialog($firstUserId, $secondUserId),
+            'sort' => [
+                'defaultOrder' => [
+                    'created_at' => SORT_DESC
+                ]
+            ]
         ]);
     }
 

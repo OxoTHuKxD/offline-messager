@@ -33,17 +33,11 @@ echo Nav::widget([
             ['label' => Yii::t('app', 'NAV_CONTACT_LIST'), 'url' => ['/contact-list/default/index']] :
             false,
         !Yii::$app->user->isGuest ?
-            ['label' => Yii::t('app', 'NAV_INBOX_MESSAGES'), 'url' => ['/messages/default/show-inbox-messages']] :
-            false,
-        !Yii::$app->user->isGuest ?
-            ['label' => Yii::t('app', 'NAV_SENT_MESSAGES'), 'url' => ['/messages/default/show-sent-messages']] :
-            false,
-        !Yii::$app->user->isGuest ?
             ['label' => Yii::t('app', 'NAV_SEND_MESSAGE'), 'url' => ['/messages/send/index']] :
             false,
         !Yii::$app->user->isGuest ?
             ['label' => Yii::t('app', 'NAV_PROFILE'), 'items' => [
-                ['label' => Yii::t('app', 'NAV_PROFILE'), 'url' => ['/user/profile/index']],
+                ['label' => Yii::t('app', 'NAV_PROFILE'), 'url' => ['/user/default/profile', 'id' => Yii::$app->user->id]],
                 ['label' => Yii::t('app', 'NAV_CHANGE_PASSWORD'), 'url' => ['/user/settings/change-password']],
                 ['label' => Yii::t('app', 'NAV_LOGOUT'),
                     'url' => ['/user/security/logout'],

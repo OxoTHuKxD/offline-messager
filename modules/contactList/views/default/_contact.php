@@ -11,6 +11,7 @@ use yii\helpers\Html;
         <?php } else { ?>
             <span class="label label-danger"><?= \app\modules\user\Module::t("module", "STATUS_OFFLINE") ?></span>
         <?php } ?>
+        <?= \app\modules\messages\externalContracts\widgets\SendMessageButtonWidget::widget(['userId' => $model->contact_user_id]) ?>
         <?= \app\modules\contactList\externalContracts\widgets\ChangeContactWidget::widget(['userId' => $model->contact_user_id]) ?>
     </h3>
 </div>

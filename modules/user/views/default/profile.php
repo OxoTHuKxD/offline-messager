@@ -40,4 +40,5 @@
         <?php } ?>
     <?php } ?>
     <?= \app\modules\contactList\externalContracts\widgets\ChangeContactWidget::widget(['userId' => $model->id]) ?>
+    <?= \app\modules\messages\externalContracts\widgets\DialogWidget::widget(['userId' => $model->id]) ?>
 </div>

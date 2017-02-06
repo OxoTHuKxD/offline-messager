@@ -9,6 +9,14 @@ use yii\db\ActiveQuery;
  */
 class MessageQuery extends ActiveQuery
 {
+    public function userDialog($firstUserId, $secondUserId)
+    {
+        return $this->andWhere([
+            'or',
+            ['user_sent_id' => $firstUserId, 'user_inbox_id' => $secondUserId],
+            ['user_inbox_id' => $firstUserId, 'user_sent_id' => $secondUserId]
+        ]);
+    }
     /**
      * @param int $userId
      * @return $this
