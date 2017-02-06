@@ -24,5 +24,9 @@ class Bootstrap implements BootstrapInterface
         \Yii::$container->set('app\modules\contactList\externalContracts\give\UserHasContactInterface', [
             'class' => 'app\modules\contactList\implementationContracts\give\UserHasContact'
         ]);
+
+        \Yii::$container->set('app\modules\contactList\externalContracts\give\UserGetContactsInterface', [
+            'class' => 'app\modules\contactList\implementationContracts\give\UserGetContacts'
+        ]);
     }
 }
