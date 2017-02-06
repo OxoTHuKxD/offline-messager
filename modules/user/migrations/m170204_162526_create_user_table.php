@@ -29,7 +29,7 @@ class m170204_162526_create_user_table extends Migration
     {
         $this->createTable($this->module->userTableName, [
             'id' => $this->primaryKey(),
-            'username' => $this->string(25)->notNull(),
+            'username' => $this->string(255)->notNull(),
             'email' => $this->string(255)->notNull()->unique(),
             'password_hash' => $this->string(60)->notNull(),
             'status_count' => $this->integer()->notNull()->defaultValue(0),
