@@ -36,13 +36,25 @@ class DefaultController extends Controller
         ]);
     }
 
+    /**
+     * @param int $id
+     */
     public function actionAddContact($id)
     {
         try {
             $this->mainService->addUserContact(\Yii::$app->user->id, $id);
-        } catch (ErrorException $e) {
+        } catch (ErrorException $e) {}
+        $this->redirect(['/user/default/profile', 'id' => $id]);
+    }
 
-        }
-        $this->redirect(['index']);
+    /**
+     * @param int $id
+     */
+    public function actionRemoveContact($id)
+    {
+        try {
+            $this->mainService->removeUserContact(\Yii::$app->user->id, $id);
+        } catch (ErrorException $e) {}
+        $this->redirect(['/user/default/profile', 'id' => $id]);
     }
 }

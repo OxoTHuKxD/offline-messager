@@ -22,8 +22,6 @@ class Module extends \yii\base\Module
     public function init()
     {
         parent::init();
-
-        // custom initialization code goes here
     }
 
     public static function t($category, $message, $params = [], $language = null)

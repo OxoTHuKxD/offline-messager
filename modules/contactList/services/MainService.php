@@ -43,16 +43,26 @@ class MainService extends Component
     public function addUserContact($userId, $contactUserId)
     {
         if (UserContactList::find()->where(['user_id' => $userId, 'contact_user_id' => $contactUserId])->exists())
-            throw new ErrorException("sdfsfdsdf");
+            throw new ErrorException();
 
         if (!($this->userFinder->hasUserById($userId) && $this->userFinder->hasUserById($contactUserId))) {
-            throw new ErrorException("sdfsfdsdf");
+            throw new ErrorException();
         }
 
         $userContact = \Yii::createObject('app\modules\contactList\models\UserContactList');
         $userContact->user_id = $userId;
         $userContact->contact_user_id = $contactUserId;
         $userContact->save();
+    }
+
+    /**
+     * @param int $userId
+     * @param int $contactUserId
+     * @return bool
+     */
+    public function hasUserContact($userId, $contactUserId)
+    {
+        return UserContactList::find()->where(['user_id' => $userId, 'contact_user_id' => $contactUserId])->exists();
     }
 
     /**

@@ -42,17 +42,6 @@ class UserContactList extends ActiveRecord
     }
 
     /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'user_id' => \Yii::t('modules/user/module', 'User ID'),
-            'contact_user_id' => \Yii::t('modules/user/module', 'Contact User ID'),
-        ];
-    }
-
-    /**
      * @return \app\modules\contactList\externalContracts\get\UserInterface|null
      */
     public function getContactUser()
