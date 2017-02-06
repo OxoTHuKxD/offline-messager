@@ -5,7 +5,7 @@ use yii\helpers\Html;
 ?>
 <div class="user">
     <h3>
-        <?= Html::a($model->getContactUser()->getName(), ['/user/default/profile', 'id' => $model->contact_user_id]) ?>
+        <?= Html::a(Html::encode($model->getContactUser()->getName()), ['/user/default/profile', 'id' => $model->contact_user_id]) ?>
         <?php if ($model->getContactUser()->isOnline()) { ?>
             <span class="label label-success"><?= \app\modules\user\Module::t("module", "STATUS_ONLINE") ?></span>
         <?php } else { ?>

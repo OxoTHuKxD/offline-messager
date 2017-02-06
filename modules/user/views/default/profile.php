@@ -17,7 +17,7 @@
         </div>
     <?php } ?>
     <h2>
-        <?= $model->username ?>
+        <?= \yii\helpers\Html::encode($model->username) ?>
         <?php if ($model->isOnline()) { ?>
             <span class="label label-success">Online</span>
         <?php } else { ?>
