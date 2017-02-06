@@ -16,6 +16,7 @@ return [
         'app\modules\main\Bootstrap',
         'app\modules\user\Bootstrap',
         'app\modules\contactList\Bootstrap',
+        'app\modules\messages\Bootstrap'
     ],
     'components' => [
         'db' => [

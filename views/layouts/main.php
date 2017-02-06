@@ -30,9 +30,11 @@ echo Nav::widget([
             ['label' => Yii::t('app', 'NAV_LOGIN'), 'url' => ['/user/security/login']] :
             false,
         !Yii::$app->user->isGuest ?
+            ['label' => Yii::t('app', 'NAV_CONTACT_LIST'), 'url' => ['/contact-list/default/index']] :
+            false,
+        !Yii::$app->user->isGuest ?
             ['label' => Yii::t('app', 'NAV_PROFILE'), 'items' => [
                 ['label' => Yii::t('app', 'NAV_PROFILE'), 'url' => ['/user/profile/index']],
-                ['label' => Yii::t('app', 'NAV_CONTACT_LIST'), 'url' => ['/contact-list/default/index']],
                 ['label' => Yii::t('app', 'NAV_CHANGE_PASSWORD'), 'url' => ['/user/settings/change-password']],
                 ['label' => Yii::t('app', 'NAV_LOGOUT'),
                     'url' => ['/user/security/logout'],

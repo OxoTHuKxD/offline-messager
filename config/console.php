@@ -9,7 +9,8 @@ return [
             'migrationPath' => '@app',
             'migrationNamespaces' => [
                 'app\modules\user\migrations',
-                'app\modules\contactList\migrations'
+                'app\modules\contactList\migrations',
+                'app\modules\messages\migrations',
             ],
         ],
     ]
