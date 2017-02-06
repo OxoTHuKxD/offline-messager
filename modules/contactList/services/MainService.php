@@ -73,4 +73,13 @@ class MainService extends Component
     {
         UserContactList::deleteAll(['user_id' => $userId, 'contact_user_id' => $contactUserId]);
     }
+
+    public function getUserContactsIdList($userId)
+    {
+        return array_map(
+            function($el) {
+                return intval($el['contact_user_id']);
+            }, UserContactList::find()->where(['user_id' => $userId])->asArray()->select('contact_user_id')->all()
+        );
+    }
 }

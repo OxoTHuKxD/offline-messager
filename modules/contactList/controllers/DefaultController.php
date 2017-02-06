@@ -24,7 +24,6 @@ class DefaultController extends Controller
         parent::__construct($id, $module, $config);
     }
 
-
     /**
      * Renders the index view for the module
      * @return string
