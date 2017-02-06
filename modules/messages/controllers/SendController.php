@@ -29,6 +29,7 @@ class SendController extends Controller
         if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
             try {
                 $this->sendService->sendMessage(\Yii::$app->user->id, $model->userId, $model->message);
+                $this->redirect(['/messages/default/show-sent-messages']);
             }catch (ErrorException $e){
                 $model->addError('userId', $e->getMessage());
             }
