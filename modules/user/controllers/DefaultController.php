@@ -5,6 +5,7 @@ namespace app\modules\user\controllers;
 use app\modules\user\services\MainService;
 use yii\base\ErrorException;
 use yii\base\Module;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -23,6 +24,22 @@ class DefaultController extends Controller
     {
         $this->mainService = $mainService;
         parent::__construct($id, $module, $config);
+    }
+
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['change-status-user'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@']
+                    ],
+                ],
+            ]
+        ];
     }
 
     /**

@@ -6,6 +6,7 @@ use app\modules\user\forms\ChangePasswordForm;
 use app\modules\user\services\SettingsService;
 use yii\base\ErrorException;
 use yii\base\Module;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 
 class SettingsController extends Controller
@@ -20,6 +21,21 @@ class SettingsController extends Controller
     {
         $this->settingsService = $settingsService;
         parent::__construct($id, $module, $config);
+    }
+
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@']
+                    ],
+                ],
+            ]
+        ];
     }
 
     public function actionChangePassword()

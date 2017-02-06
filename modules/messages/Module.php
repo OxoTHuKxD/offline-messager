@@ -3,6 +3,7 @@
 namespace app\modules\messages;
 
 use yii\base\InvalidConfigException;
+use yii\filters\AccessControl;
 
 /**
  * messages module definition class
@@ -15,12 +16,20 @@ class Module extends \yii\base\Module
     public $controllerNamespace = 'app\modules\messages\controllers';
 
     public $messagesTableName = '{{%messages}}';
-    /**
-     * @inheritdoc
-     */
-    public function init()
+
+    public function behaviors()
     {
-        parent::init();
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
     }
 
     public static function t($category, $message, $params = [], $language = null)

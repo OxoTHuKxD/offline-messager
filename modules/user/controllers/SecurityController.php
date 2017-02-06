@@ -7,6 +7,7 @@ use app\modules\user\forms\RegisterForm;
 use app\modules\user\services\SecurityService;
 use yii\base\ErrorException;
 use yii\base\Module;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 
 class SecurityController extends Controller
@@ -21,6 +22,27 @@ class SecurityController extends Controller
     {
         $this->securityService = $securityService;
         parent::__construct($id, $module, $config);
+    }
+
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['login', 'register'],
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['logout'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ]
+        ];
     }
 
     public function actionRegister()
