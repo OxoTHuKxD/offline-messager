@@ -24,7 +24,7 @@ class UserFinder implements UserFinderInterface
     public function getUserById($id)
     {
         $user = $this->userFinder->getUserById($id);
-        return is_null($user) ? $user : new User($user->getId(), $user->getName());
+        return is_null($user) ? null : new User($user);
     }
 
     /**

@@ -6,21 +6,16 @@ use app\modules\contactList\externalContracts\get\UserInterface;
 
 class User implements UserInterface
 {
-    /** @var int */
-    private $id;
-
-    /** @var string */
-    private $name;
+    /** @var \app\modules\user\externalContracts\give\UserInterface */
+    private $user;
 
     /**
      * User constructor.
-     * @param int $id
-     * @param string $name
+     * @param \app\modules\user\externalContracts\give\UserInterface $user
      */
-    public function __construct($id, $name)
+    public function __construct(\app\modules\user\externalContracts\give\UserInterface $user)
     {
-        $this->id = $id;
-        $this->name = $name;
+        $this->user = $user;
     }
 
     /**
@@ -28,7 +23,7 @@ class User implements UserInterface
      */
     public function getId()
     {
-        return $this->id;
+        return $this->user->getId();
     }
 
     /**
@@ -36,7 +31,16 @@ class User implements UserInterface
      */
     public function getName()
     {
-        return $this->name;
+        return $this->user->getName();
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function isOnline()
+    {
+        return $this->user->isOnline();
+    }
+
 
 }
