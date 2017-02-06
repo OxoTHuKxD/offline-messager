@@ -39,4 +39,5 @@
             <?= \yii\helpers\Html::a(\app\modules\user\Module::t("module", "DISLIKE"), ['default/change-status-user', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
         <?php } ?>
     <?php } ?>
+    <?= \app\modules\contactList\externalContracts\widgets\ChangeContactWidget::widget(['userId' => $model->id]) ?>
 </div>
