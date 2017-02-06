@@ -13,7 +13,7 @@ class UserFinder implements UserFinderInterface
     public function getUserById($id)
     {
         $user = User::findOne($id);
-        return is_null($user) ? null : new \app\modules\user\implementationContracts\give\User($user->id, $user->username);
+        return is_null($user) ? null : new \app\modules\user\implementationContracts\give\User($user);
     }
 
     /**

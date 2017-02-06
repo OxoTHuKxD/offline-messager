@@ -13,4 +13,9 @@ interface UserInterface
      * @return string
      */
     public function getName();
+
+    /**
+     * @return bool
+     */
+    public function isOnline();
 }
