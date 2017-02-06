@@ -17,8 +17,12 @@ class Bootstrap implements BootstrapInterface
             ],
         ];
 
+        \Yii::$container->set('app\modules\contactList\externalContracts\get\UserInterface', [
+            'class' => 'app\modules\mediator\implementation\contactList\User'
+        ]);
+
         \Yii::$container->set('app\modules\contactList\externalContracts\get\UserFinderInterface', [
-            'class' => 'app\modules\director\implementation\contactList\UserFinder'
+            'class' => 'app\modules\mediator\implementation\contactList\UserFinder'
         ]);
 
         \Yii::$container->set('app\modules\contactList\externalContracts\give\UserHasContactInterface', [

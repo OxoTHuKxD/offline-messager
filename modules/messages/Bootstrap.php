@@ -18,19 +18,19 @@ class Bootstrap implements BootstrapInterface
         ];
 
         \Yii::$container->set('app\modules\messages\externalContracts\get\UserFinderInterface', [
-            'class' => 'app\modules\director\implementation\messages\UserFinder'
+            'class' => 'app\modules\mediator\implementation\messages\UserFinder'
         ]);
 
         \Yii::$container->set('app\modules\messages\externalContracts\get\UserCanSendMessageInterface', [
-            'class' => 'app\modules\director\implementation\messages\UserCanSendMessage'
+            'class' => 'app\modules\mediator\implementation\messages\UserCanSendMessage'
         ]);
 
         \Yii::$container->set('app\modules\messages\externalContracts\get\UserContactListInterface', [
-            'class' => 'app\modules\director\implementation\messages\UserContactList'
+            'class' => 'app\modules\mediator\implementation\messages\UserContactList'
         ]);
 
         \Yii::$container->set('app\modules\messages\externalContracts\get\UserInterface', [
-            'class' => 'app\modules\director\implementation\messages\User'
+            'class' => 'app\modules\mediator\implementation\messages\User'
         ]);
     }
 }

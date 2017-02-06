@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\director\implementation\contactList;
+namespace app\modules\mediator\implementation\contactList;
 
 use app\modules\contactList\externalContracts\get\UserFinderInterface;
 

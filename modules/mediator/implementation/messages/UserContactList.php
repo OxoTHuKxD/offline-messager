@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\director\implementation\messages;
+namespace app\modules\mediator\implementation\messages;
 
 use app\modules\contactList\externalContracts\give\UserGetContactsInterface;
 use app\modules\messages\externalContracts\get\UserContactListInterface;

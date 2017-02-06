@@ -1,8 +1,8 @@
 <?php
 
-namespace app\modules\director\implementation\messages;
+namespace app\modules\mediator\implementation\contactList;
 
-use app\modules\messages\externalContracts\get\UserInterface;
+use app\modules\contactList\externalContracts\get\UserInterface;
 
 class User implements UserInterface
 {
