@@ -18,7 +18,7 @@ class Module extends \yii\base\Module
 
     public $userStatusTableName = '{{%user_status}}';
 
-    public $freeOnlineTime = 60 * 1;
+    public $freeOnlineTime = 60 * 15;
 
     public $onlineCacheKey = 'user_online';
 
