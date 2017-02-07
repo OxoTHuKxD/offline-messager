@@ -10,6 +10,8 @@ class UserNewMessages implements UserNewMessagesInterface
     /** @var MainService */
     private $mainService;
 
+    private $userNewMessageCountCache = [];
+
     /**
      * UserNewMessages constructor.
      * @param MainService $mainService
@@ -24,7 +26,9 @@ class UserNewMessages implements UserNewMessagesInterface
      */
     public function getNewMessagesCount($userId)
     {
-        return $this->mainService->getNewMessagesCount($userId);
+        $count = isset($this->userNewMessageCountCache[$userId]) ? $this->userNewMessageCountCache[$userId] : $this->mainService->getNewMessagesCount($userId);
+        $this->userNewMessageCountCache[$userId] = $count;
+        return $count;
     }
 
 }

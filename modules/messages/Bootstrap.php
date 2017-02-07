@@ -17,7 +17,7 @@ class Bootstrap implements BootstrapInterface
             ],
         ];
 
-        \Yii::$container->set('app\modules\messages\externalContracts\get\UserFinderInterface', [
+        \Yii::$container->setSingleton('app\modules\messages\externalContracts\get\UserFinderInterface', [
             'class' => 'app\modules\mediator\implementation\messages\UserFinder'
         ]);
 
@@ -33,7 +33,7 @@ class Bootstrap implements BootstrapInterface
             'class' => 'app\modules\mediator\implementation\messages\User'
         ]);
 
-        \Yii::$container->set('app\modules\messages\externalContracts\give\UserNewMessagesInterface', [
+        \Yii::$container->setSingleton('app\modules\messages\externalContracts\give\UserNewMessagesInterface', [
             'class' => 'app\modules\messages\implementationContracts\give\UserNewMessages'
         ]);
     }

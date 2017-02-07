@@ -9,6 +9,8 @@ class UserFinder implements UserFinderInterface
     /** @var \app\modules\user\externalContracts\give\UserFinderInterface */
     private $userFinder;
 
+    private $userCache = [];
+
     /**
      * UserFinder constructor.
      * @param \app\modules\user\externalContracts\give\UserFinderInterface $userFinder
@@ -17,13 +19,14 @@ class UserFinder implements UserFinderInterface
     {
         $this->userFinder = $userFinder;
     }
-    
+
     /**
      * @inheritDoc
      */
     public function getUserById($id)
     {
-        $user = $this->userFinder->getUserById($id);
+        $user = isset($this->userCache[$id]) ? $this->userCache[$id] : $this->userFinder->getUserById($id);
+        $this->userCache[$id] = $user;
         return is_null($user) ? null : new User($user);
     }
 
@@ -32,6 +35,8 @@ class UserFinder implements UserFinderInterface
      */
     public function hasUserById($id)
     {
+        if(isset($this->userCache[$id]) && $this->userCache[$id])
+            return true;
         return $this->userFinder->hasUserById($id);
     }
 }
